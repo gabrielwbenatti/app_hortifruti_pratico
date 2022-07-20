@@ -5,6 +5,5 @@ class DashboardController extends GetxController {
 
   void changePageIndex(int index) {
     currentPageIndex.value = index;
-    ;
   }
 }

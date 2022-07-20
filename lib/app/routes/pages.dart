@@ -7,7 +7,7 @@ abstract class AppPages {
   static final pages = [
     GetPage(
         name: Routes.dashboard,
-        page: () => DashboardPage(),
-        binding: DashboardBinding()),
+        page: () => const DashboardPage(),
+        binding: DashboardBinding(),),
   ];
 }
