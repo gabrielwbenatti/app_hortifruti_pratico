@@ -5,31 +5,16 @@ import 'package:get/get.dart';
 class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Flutter Demo Home Page')),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Obx(
-                () => Text(
-                  '${controller.counter.value}',
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ),
-            ],
+    return ListView(
+      children: const [
+        ListTile(
+          leading: FlutterLogo(),
+          title: Text(
+            'Horti-verde',
           ),
+          trailing: Text('Aberto'),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: controller.incrementCounter,
-        tooltip: 'Increment',
-      ),
+      ],
     );
   }
 }
