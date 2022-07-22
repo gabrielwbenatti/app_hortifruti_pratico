@@ -4,7 +4,7 @@ import 'package:get/get_connect.dart';
 class Api extends GetConnect {
   @override
   void onInit() {
-    httpClient.baseUrl = 'https://127.0.0.1/';
+    httpClient.baseUrl = 'http://localhost:3333/';
     httpClient.addRequestModifier((Request request) {
       request.headers['Accept'] = 'application/json';
       request.headers['Content-Type'] = 'application/json';
