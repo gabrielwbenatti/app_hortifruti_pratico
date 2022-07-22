@@ -9,12 +9,11 @@ class DashboardPage extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:const Text('DashboardPage')),
       body: SafeArea(
         child: Obx(
           () => IndexedStack(
             children: [
-               HomePage(),
+              HomePage(),
               Text('perfil'),
               Text('pedidos'),
             ],

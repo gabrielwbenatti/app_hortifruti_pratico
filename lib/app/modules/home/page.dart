@@ -7,16 +7,21 @@ class HomePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: const [
-        ListTile(
-          leading: FlutterLogo(),
-          title: Text(
-            'Horti-verde',
-          ),
-          trailing: Text('Aberto'),
+    return Scaffold(
+      appBar: AppBar(title: const Text('Hortifruti Pratico')),
+      body: controller.obx(
+        (state) => ListView(
+          children: const [
+            ListTile(
+              leading: FlutterLogo(),
+              title: Text(
+                'Horti-verde',
+              ),
+              trailing: Text('Aberto'),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

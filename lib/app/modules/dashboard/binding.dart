@@ -8,6 +8,8 @@ class DashboardBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut<DashboardController>(() => DashboardController());
-    Get.lazyPut<HomeController>(() => HomeController(HomeRepository(Get.find<Api>())));
+    Get.lazyPut<HomeController>(
+      () => HomeController(HomeRepository(Get.find<Api>())),
+    );
   }
 }
