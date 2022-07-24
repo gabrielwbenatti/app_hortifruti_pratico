@@ -11,14 +11,13 @@ class HomePage extends GetView<HomeController> {
       appBar: AppBar(title: const Text('Hortifruti Pratico')),
       body: controller.obx(
         (state) => ListView(
-          children: const [
-            ListTile(
-              leading: FlutterLogo(),
-              title: Text(
-                'Horti-verde',
-              ),
-              trailing: Text('Aberto'),
-            ),
+          children: [
+            for (var estabelecimento in state!)
+              ListTile(
+                leading: const FlutterLogo(),
+                title: Text(estabelecimento.nome),
+                trailing: Text(estabelecimento.isOnline ? 'Aberto' : 'Fechado'),
+              )
           ],
         ),
       ),

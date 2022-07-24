@@ -1,10 +1,11 @@
+import 'package:app_hortifruti_pratico/app/data/provider/models/estabelecimento.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
 import 'package:get/get_connect.dart';
 
 class Api extends GetConnect {
   @override
   void onInit() {
-    httpClient.baseUrl = 'http://192.168.15.8:3333/';
+    httpClient.baseUrl = 'http://192.168.15.6:3333/';
     httpClient.addRequestModifier((Request request) {
       request.headers['Accept'] = 'application/json';
       request.headers['Content-Type'] = 'application/json';
@@ -14,10 +15,15 @@ class Api extends GetConnect {
     super.onInit();
   }
 
-  Future<List> getEstabelecimentos() async {
+  Future<List<EstabelecimentoModel>> getEstabelecimentos() async {
     var response = _errorHandler(await get('cidades/1/estabelecimentos'));
 
-    return response.body;
+    List<EstabelecimentoModel> data = [];
+    for (var estabelecimento in response.body) {
+      data.add(EstabelecimentoModel.fromJson(estabelecimento));
+    }
+
+    return data;
   }
 
   Response _errorHandler(Response response) {
