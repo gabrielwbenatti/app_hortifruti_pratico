@@ -6,7 +6,6 @@ class HomeRepository {
 
   HomeRepository(this._api);
 
-  Future<List<EstabelecimentoModel>> getEstabelecimentos() {
-    return _api.getEstabelecimentos();
-  }
+  Future<List<EstabelecimentoModel>> getEstabelecimentos() =>
+      _api.getEstabelecimentos();
 }
