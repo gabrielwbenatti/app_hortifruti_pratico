@@ -12,10 +12,11 @@ class HomeController extends GetxController
   void onInit() {
     _repository.getEstabelecimentos().then(
       (data) {
-        change(
-          data,
-          status: RxStatus.success(),
-        );
+        if (data.isEmpty) {
+          change(data, status: RxStatus.empty());
+        } else {
+          change(data, status: RxStatus.success());
+        }
       },
       onError: (error) => change(
         null,

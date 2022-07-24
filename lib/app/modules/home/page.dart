@@ -20,6 +20,30 @@ class HomePage extends GetView<HomeController> {
               )
           ],
         ),
+        // onError: (error) => const Padding(
+        //   padding: EdgeInsets.all(16.0),
+        //   child: Center(
+        //     child: Text(
+        //       'Não foi possível localizar os estabelecimentos, tente novamente.',
+        //       textAlign: TextAlign.center,
+        //       style: TextStyle(
+        //         fontSize: 18.0,
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        onEmpty: const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Center(
+            child: Text(
+              'Nenhum estabelecimento localizado.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 18.0,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
