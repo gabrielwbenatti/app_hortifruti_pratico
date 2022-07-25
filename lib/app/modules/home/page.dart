@@ -1,4 +1,6 @@
 import 'package:app_hortifruti_pratico/app/modules/home/controller.dart';
+import 'package:app_hortifruti_pratico/app/routes/routes.dart';
+import 'package:app_hortifruti_pratico/app/widgets/estabelecimento_status.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:get/get.dart';
@@ -15,7 +17,12 @@ class HomePage extends GetView<HomeController> {
           children: [
             for (var estabelecimento in state!)
               ListTile(
-                onTap: () {},
+                onTap: () => Get.toNamed(
+                  Routes.estabelecimento.replaceFirst(
+                    ':id',
+                    estabelecimento.id.toString(),
+                  ),
+                ),
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 leading: Container(
@@ -30,24 +37,7 @@ class HomePage extends GetView<HomeController> {
                   ),
                 ),
                 title: Text(estabelecimento.nome),
-                trailing: Container(
-                  padding: const EdgeInsets.all(4.0),
-                  decoration: BoxDecoration(
-                    color: estabelecimento.isOnline
-                        ? Colors.green
-                        : Colors.black45,
-                    border: Border.all(
-                      color: Colors.black12,
-                      width: 2.0,
-                    ),
-                  ),
-                  child: Text(
-                    estabelecimento.isOnline ? 'Aberto' : 'Fechado',
-                    style: Get.textTheme.bodyMedium!.copyWith(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
+                trailing: EstabelecimentoStatus(estabelecimento.isOnline),
               )
           ],
         ),

@@ -5,7 +5,7 @@ import 'package:get/get_connect.dart';
 class Api extends GetConnect {
   @override
   void onInit() {
-    httpClient.baseUrl = 'http://192.168.15.6:3333/';
+    httpClient.baseUrl = 'http://192.168.15.9:3333/';
     httpClient.addRequestModifier((Request request) {
       request.headers['Accept'] = 'application/json';
       request.headers['Content-Type'] = 'application/json';
@@ -24,6 +24,12 @@ class Api extends GetConnect {
     }
 
     return data;
+  }
+
+  Future<EstabelecimentoModel> getEstabelecimento(int id) async {
+    var response = _errorHandler(await get('estabelecimentos/$id}'));
+
+    return EstabelecimentoModel.fromJson(response.body);
   }
 
   Response _errorHandler(Response response) {
