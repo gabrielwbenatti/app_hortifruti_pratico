@@ -1,4 +1,4 @@
-import 'package:app_hortifruti_pratico/app/data/provider/models/estabelecimento.dart';
+import 'package:app_hortifruti_pratico/app/data/models/estabelecimento.dart';
 import 'package:app_hortifruti_pratico/app/modules/estabelecimento/repository.dart';
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
