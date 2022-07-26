@@ -14,6 +14,7 @@ class EstabelecimentoPage extends GetView<EstabelecimentoController> {
       body: SafeArea(
         child: controller.obx(
           (state) => ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             children: [
               Row(
                 children: [
@@ -28,14 +29,20 @@ class EstabelecimentoPage extends GetView<EstabelecimentoController> {
                     ),
                   ),
                   const SizedBox(width: 16.0),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text('${state.nome}, id ${state.id}',
-                          style: Get.textTheme.headline5),
-                      EstabelecimentoStatus(state.isOnline),
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          '${state.nome}, ${state.id}',
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                          style: Get.textTheme.headline5,
+                        ),
+                        EstabelecimentoStatus(state.isOnline),
+                      ],
+                    ),
                   ),
                 ],
               )
