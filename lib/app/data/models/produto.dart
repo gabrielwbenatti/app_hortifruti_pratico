@@ -6,6 +6,8 @@ class ProdutoModel {
   num preco;
   String unidade;
 
+  bool get isKG => unidade == 'KG';
+
   ProdutoModel({
     required this.id,
     required this.nome,
