@@ -19,7 +19,7 @@ class CategoriaModel {
           ? []
           : List<ProdutoModel>.from(
               json['produtos'].map(
-                (produto) => ProdutoModel.fromJson(json),
+                (produto) => ProdutoModel.fromJson(produto),
               ),
             ),
     );

@@ -25,7 +25,7 @@ class EstabelecimentoModel {
           ? []
           : List<CategoriaModel>.from(
               json['categorias'].map(
-                (categoria) => CategoriaModel.fromJson(json),
+                (categoria) => CategoriaModel.fromJson(categoria),
               ),
             ),
     );
