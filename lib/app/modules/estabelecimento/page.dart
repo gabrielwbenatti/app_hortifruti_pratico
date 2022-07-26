@@ -8,43 +8,46 @@ class EstabelecimentoPage extends GetView<EstabelecimentoController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
-      ),
       body: SafeArea(
         child: controller.obx(
-          (state) => ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            children: [
-              Row(
-                children: [
-                  Container(
-                    width: 96.0,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: FadeInImage.memoryNetwork(
-                        placeholder: kTransparentImage,
-                        image: state!.image,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16.0),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          '${state.nome}, ${state.id}',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          style: Get.textTheme.headline5,
+          (state) => CustomScrollView(
+            slivers: [
+              const SliverAppBar(),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 16.0),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 96.0,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: FadeInImage.memoryNetwork(
+                            placeholder: kTransparentImage,
+                            image: state!.image,
+                          ),
                         ),
-                        EstabelecimentoStatus(state.isOnline),
-                      ],
-                    ),
+                      ),
+                      const SizedBox(width: 16.0),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              '${state.nome}, ${state.id}',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: Get.textTheme.headline5,
+                            ),
+                            EstabelecimentoStatus(state.isOnline),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               )
             ],
           ),
