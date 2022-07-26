@@ -32,7 +32,8 @@ class EstabelecimentoPage extends GetView<EstabelecimentoController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text(state.nome, style: Get.textTheme.headline5),
+                      Text('${state.nome}, id ${state.id}',
+                          style: Get.textTheme.headline5),
                       EstabelecimentoStatus(state.isOnline),
                     ],
                   ),
