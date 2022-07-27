@@ -1,3 +1,4 @@
+import 'package:app_hortifruti_pratico/app/routes/routes.dart';
 import 'package:intl/intl.dart';
 import 'package:app_hortifruti_pratico/app/widgets/estabelecimento_status.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -6,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class EstabelecimentoPage extends GetView<EstabelecimentoController> {
+  const EstabelecimentoPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,7 +100,13 @@ class EstabelecimentoPage extends GetView<EstabelecimentoController> {
                                 produto.preco,
                               ),
                             ),
-                            onTap: () {},
+                            onTap: () => Get.toNamed(
+                              Routes.produto,
+                              arguments: {
+                                'produto': produto,
+                                'estabelecimento': state,
+                              },
+                            ),
                           ),
                       ],
                     );

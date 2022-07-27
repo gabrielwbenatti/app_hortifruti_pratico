@@ -6,9 +6,7 @@ import 'package:get/get.dart';
 class EstabelecimentoBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<EstabelecimentoController>(
-      () =>
-          EstabelecimentoController(EstabelecimentoRepository(Get.find<Api>())),
-    );
+    Get.lazyPut<EstabelecimentoController>(() =>
+        EstabelecimentoController(EstabelecimentoRepository(Get.find<Api>())));
   }
 }
