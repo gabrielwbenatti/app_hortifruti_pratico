@@ -1,3 +1,4 @@
+import 'package:app_hortifruti_pratico/app/modules/produto/widgets/quantidade_e_peso_widget.dart';
 import 'package:intl/intl.dart';
 import 'package:app_hortifruti_pratico/app/modules/produto/controller.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -54,6 +55,7 @@ class ProdutoPage extends GetView<ProdutoController> {
                 ),
                 maxLength: 50,
               ),
+              QuantidadeEPesoWidget(isKg: produto.isKG),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: ElevatedButton(
