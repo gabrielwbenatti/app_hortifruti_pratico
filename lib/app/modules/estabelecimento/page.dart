@@ -84,9 +84,10 @@ class EstabelecimentoPage extends GetView<EstabelecimentoController> {
                             title: Text(produto.nome),
                             subtitle: Text(
                               NumberFormat.simpleCurrency()
-                                  .format(produto.preco),
+                                      .format(produto.preco) +
+                                  (produto.isKG ? '/kg' : ''),
                             ),
-                            leading: produto.imagem!.isNotEmpty
+                            leading: (produto.imagem != null)
                                 ? SizedBox(
                                     width: 56.0,
                                     height: 56.0,
@@ -95,6 +96,13 @@ class EstabelecimentoPage extends GetView<EstabelecimentoController> {
                                       child: FadeInImage.memoryNetwork(
                                         placeholder: kTransparentImage,
                                         image: produto.imagem!,
+                                        imageErrorBuilder:
+                                            (context, error, stackTrace) =>
+                                                Container(
+                                          width: 56.0,
+                                          height: 56.0,
+                                          color: Colors.red,
+                                        ),
                                       ),
                                     ),
                                   )

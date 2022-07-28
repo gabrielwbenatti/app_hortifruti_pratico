@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:app_hortifruti_pratico/app/modules/produto/controller.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class ProdutoPage extends GetView<ProdutoController> {
           ),
           child: Column(
             children: [
-              if (produto.imagem!.isNotEmpty)
+              if (produto.imagem != null)
                 Align(
                   child: Container(
                     padding: const EdgeInsets.only(bottom: 8.0),
@@ -35,6 +36,17 @@ class ProdutoPage extends GetView<ProdutoController> {
                     ),
                   ),
                 ),
+              if (produto.descricao != null)
+                Text(
+                  produto.descricao!,
+                  style: Get.textTheme.titleMedium,
+                  textAlign: TextAlign.center,
+                ),
+              Text(
+                NumberFormat.simpleCurrency().format(produto.preco) +
+                    (produto.isKG ? '/kg' : ''),
+                style: Get.textTheme.titleLarge,
+              ),
             ],
           ),
         ),
