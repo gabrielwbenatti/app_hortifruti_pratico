@@ -8,13 +8,11 @@ class ProdutoPage extends GetView<ProdutoController> {
 
   @override
   Widget build(BuildContext context) {
-    var produto = controller.produto.value;
+    var produto = controller.produto.value!;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          produto!.nome,
-        ),
+        title: Text(produto.nome),
       ),
       body: SafeArea(
         child: SingleChildScrollView(

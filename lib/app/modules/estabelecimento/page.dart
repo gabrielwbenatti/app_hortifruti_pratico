@@ -81,25 +81,24 @@ class EstabelecimentoPage extends GetView<EstabelecimentoController> {
                         ),
                         for (var produto in categoria.produtos)
                           ListTile(
+                            title: Text(produto.nome),
+                            subtitle: Text(
+                              NumberFormat.simpleCurrency()
+                                  .format(produto.preco),
+                            ),
                             leading: produto.imagem!.isNotEmpty
                                 ? SizedBox(
                                     width: 56.0,
+                                    height: 56.0,
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
                                       child: FadeInImage.memoryNetwork(
                                         placeholder: kTransparentImage,
                                         image: produto.imagem!,
-                                        fit: BoxFit.cover,
                                       ),
                                     ),
                                   )
                                 : null,
-                            title: Text(produto.nome),
-                            subtitle: Text(
-                              NumberFormat.simpleCurrency().format(
-                                produto.preco,
-                              ),
-                            ),
                             onTap: () => Get.toNamed(
                               Routes.produto,
                               arguments: {
