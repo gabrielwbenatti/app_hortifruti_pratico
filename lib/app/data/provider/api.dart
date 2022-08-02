@@ -16,7 +16,7 @@ class Api extends GetConnect {
   }
 
   Future<List<EstabelecimentoModel>> getEstabelecimentos() async {
-    var response = _errorHandler(await get('cidades/1/estabelecimentos'));
+    var response = _errorHandler(await get('cidades/3/estabelecimentos'));
 
     List<EstabelecimentoModel> data = [];
     for (var estabelecimento in response.body) {

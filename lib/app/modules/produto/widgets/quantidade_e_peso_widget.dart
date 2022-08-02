@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -35,18 +36,33 @@ class QuantidadeWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-            onPressed: () => controller.mudarQuantidade(quantidade - 1),
+            onPressed: quantidade > 1
+                ? () => controller.mudarQuantidade(quantidade - 1)
+                : null,
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.all(0),
+              minimumSize: const Size(45, 45),
+            ),
             child: const Icon(Icons.remove)),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
-            '$quantidade',
-            style: Get.textTheme.titleLarge,
+            NumberFormat.decimalPattern().format(quantidade) +
+                (controller.isKg ? 'kg' : ''),
+            style: const TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         ElevatedButton(
-            onPressed: () => controller.mudarQuantidade(quantidade + 1),
-            child: const Icon(Icons.add)),
+          onPressed: () => controller.mudarQuantidade(quantidade + 1),
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.all(0),
+            minimumSize: const Size(45, 45),
+          ),
+          child: const Icon(Icons.add),
+        ),
         // ElevatedButton(onPressed: () {}, child: const Icon(Icons.add)),
       ],
     );
@@ -70,9 +86,7 @@ class QuantidadeEPesoController extends GetxController {
   num quantidade = 1;
 
   void mudarQuantidade(num value) {
-    if (value > 0) {
-      quantidade = value;
-      update();
-    }
+    quantidade = value;
+    update();
   }
 }
