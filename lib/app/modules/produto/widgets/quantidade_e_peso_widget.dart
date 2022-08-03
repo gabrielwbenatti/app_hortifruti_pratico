@@ -17,6 +17,10 @@ class QuantidadeEPesoWidget extends StatelessWidget {
       builder: (controller) => Column(
         children: [
           QuantidadeWidget(),
+          if (isKg) ...[
+            const SizedBox(height: 4.0),
+            PesoWidget(),
+          ],
         ],
       ),
     );
@@ -24,7 +28,7 @@ class QuantidadeEPesoWidget extends StatelessWidget {
 }
 
 class QuantidadeWidget extends StatelessWidget {
-  var controller = Get.find<QuantidadeEPesoController>();
+  final controller = Get.find<QuantidadeEPesoController>();
 
   QuantidadeWidget({Key? key}) : super(key: key);
 
@@ -70,11 +74,19 @@ class QuantidadeWidget extends StatelessWidget {
 }
 
 class PesoWidget extends StatelessWidget {
-  const PesoWidget({Key? key}) : super(key: key);
+  final controller = Get.find<QuantidadeEPesoController>();
+
+  PesoWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Slider(
+      onChanged: controller.mudarPeso,
+      value: controller.peso,
+      min: 1.0,
+      max: 2.0,
+      divisions: 19,
+    );
   }
 }
 
@@ -84,8 +96,14 @@ class QuantidadeEPesoController extends GetxController {
   QuantidadeEPesoController({required this.isKg});
 
   num quantidade = 1;
+  double get peso => quantidade.toDouble();
 
   void mudarQuantidade(num value) {
+    quantidade = value;
+    update();
+  }
+
+  void mudarPeso(double value) {
     quantidade = value;
     update();
   }
