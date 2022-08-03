@@ -12,12 +12,12 @@ class DashboardPage extends GetView<DashboardController> {
       body: SafeArea(
         child: Obx(
           () => IndexedStack(
-            children: [
+            index: controller.currentPageIndex.value,
+            children: const [
               HomePage(),
               Text('perfil'),
               Text('pedidos'),
             ],
-            index: controller.currentPageIndex.value,
           ),
         ),
       ),
